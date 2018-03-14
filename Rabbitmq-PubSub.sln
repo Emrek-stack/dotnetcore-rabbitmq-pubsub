@@ -3,11 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbitmq.Publisher", "Rabbitmq-PubSub\Rabbitmq.Publisher.csproj", "{5809A2EB-E417-4BDA-A0FB-87E568F77681}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rabbitmq.Publisher", "Rabbitmq-PubSub\Rabbitmq.Publisher.csproj", "{5809A2EB-E417-4BDA-A0FB-87E568F77681}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbitmq.Subscriber", "Rabbitmq.Subscriber\Rabbitmq.Subscriber.csproj", "{54D8C908-A3DF-49F8-9E1E-4BA669715A37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rabbitmq.Subscriber", "Rabbitmq.Subscriber\Rabbitmq.Subscriber.csproj", "{54D8C908-A3DF-49F8-9E1E-4BA669715A37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbitmq.Core", "Rabbitmq.Core\Rabbitmq.Core.csproj", "{B920FF05-82CF-492A-8D00-A0B8EF066F98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rabbitmq.Core", "Rabbitmq.Core\Rabbitmq.Core.csproj", "{B920FF05-82CF-492A-8D00-A0B8EF066F98}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{2C7C5DC6-D4ED-4183-BACE-609DE9B82B4A}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbitmq.ServiceBase", "Rabbitmq.ServiceBase\Rabbitmq.ServiceBase.csproj", "{5BA68EF9-14A6-4708-AA99-9A7F2B1C6DD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +34,10 @@ Global
 		{B920FF05-82CF-492A-8D00-A0B8EF066F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B920FF05-82CF-492A-8D00-A0B8EF066F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B920FF05-82CF-492A-8D00-A0B8EF066F98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BA68EF9-14A6-4708-AA99-9A7F2B1C6DD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BA68EF9-14A6-4708-AA99-9A7F2B1C6DD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BA68EF9-14A6-4708-AA99-9A7F2B1C6DD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BA68EF9-14A6-4708-AA99-9A7F2B1C6DD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
