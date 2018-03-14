@@ -4,11 +4,13 @@ using RabbitMQ.Client.Events;
 
 namespace Rabbitmq.Core.Impl
 {
-    public class Consumer : RabbitConnectionBase, IConsumer
+    public class Consumer :  IConsumer
     {
-        public Consumer(string server, string queueName, string exchangeType) : base(server, queueName, exchangeType)
-        {
-            Reconnect();            
+        private RabbitMqService _rabbitMqService;
+        private const string queueName = "logs";
+
+        public Consumer() 
+        {                
         }
 
 

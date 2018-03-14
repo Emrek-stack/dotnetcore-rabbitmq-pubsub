@@ -2,6 +2,6 @@
 {
     public interface IProducer
     {
-        void SendMessage(byte[] message);
+        void SendMessage(string message);
     }
 }

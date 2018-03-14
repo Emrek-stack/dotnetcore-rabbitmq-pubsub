@@ -4,18 +4,17 @@ using System.Text;
 using System.Threading;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using RabbitMQ.Client.Exceptions;
 
 namespace Rabbitmq.Core
 {
-    public abstract class RabbitConnectionBase : IDisposable
-    {                             
+    public class RabbitMqService : IDisposable
+    {
         private ConnectionFactory _factory;
         private IConnection _connection;
         protected IModel Channel;
         private EventingBasicConsumer _consumer;
-        
-        
+
+
         private const bool Durable = true;
         private const bool AutoAck = true;
 
@@ -23,18 +22,33 @@ namespace Rabbitmq.Core
         protected readonly string QueueName;
 
 
-        protected RabbitConnectionBase(string server, string queueName, string exchangeType)
+        public RabbitMqService(string server, string queueName)
         {
             this._server = server;
             this.QueueName = queueName;
             //ExchangeTypeName = exchangeType;
         }
+
+        public IConnection GetConnection()
+        {
+            _factory = new ConnectionFactory
+            {
+                HostName = _server,
+                UserName = "boyner",
+                Password = "B12312312!!"
+            };
+
+            _connection.ConnectionShutdown += Connection_ConnectionShutdown;
+
+            return _factory.CreateConnection();
+        }
+
+
         //Create the connection, Model and Exchange(if one is required)
         private void Connect()
         {
-            _factory = new ConnectionFactory { HostName = _server, UserName = "boyner", Password = "B12312312!!" };
-            _connection = _factory.CreateConnection();
-            _connection.ConnectionShutdown += Connection_ConnectionShutdown;
+            _connection = GetConnection();
+
 
 
             Channel = _connection.CreateModel();

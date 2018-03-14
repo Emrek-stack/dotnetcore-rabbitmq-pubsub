@@ -1,22 +1,40 @@
-﻿namespace Rabbitmq.ServiceBase
+﻿using System.IO;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+
+namespace Rabbitmq.ServiceBase
 {
     public class Startup
     {
-        IConfigurationRoot Configuration { get; }
-
-        public Startup()
+        internal static void ConfigureServices(IServiceCollection serviceCollection)
         {
-            var builder = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json");
+            // add logging
+            serviceCollection.AddSingleton(new LoggerFactory()
+                .AddConsole()
+                .AddDebug());
+            serviceCollection.AddLogging();
 
-            Configuration = builder.Build();
+            // build configuration
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", false)
+                .Build();
+
+            serviceCollection.AddOptions();
+            //serviceCollection.Configure<AppSettings>(configuration.GetSection("Configuration"));
+            ConfigureConsole(configuration);
+
+            // add services
+           // serviceCollection.AddTransient<ITestService, TestService>();
+
+            // add app
+            //serviceCollection.AddTransient<App>();
         }
 
-        public void ConfigureServices(IServiceCollection services)
+        private static void ConfigureConsole(IConfigurationRoot configuration)
         {
-            services.AddLogging();
-            services.AddSingleton<IConfigurationRoot>(Configuration);
-            services.AddSingleton<IMyService, MyService>();
+            System.Console.Title = configuration.GetSection("Configuration:ConsoleTitle").Value;
         }
     }
 }
