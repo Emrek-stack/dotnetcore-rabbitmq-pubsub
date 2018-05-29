@@ -18,9 +18,9 @@ namespace Rabbitmq.Subscriber
         {
             _factory = new ConnectionFactory()
             {
-                HostName = "52.214.177.146",
+                HostName = "00000",
                 RequestedHeartbeat = 30,
-                UserName = "boyner",
+                UserName = "berwqerweqrewrew",
                 Password = "B12312312!!"
             };
 
